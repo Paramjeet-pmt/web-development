@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Position Property</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav {
+            margin: 0px;
+            padding: 10px;
+            background-color: pink;
+            display: flex;
+            line-height: 40px;
+            justify-content: space-around;
+            position: sticky;
+            top: 0;
+        }
+
+        div {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            border: 2px solid black;
+            display: inline-block;
+        }
+
+        #box1 {
+            background-color: lightcoral;
+            position: static;
+            /* Default position  on this no top,bottom,left,right work and also z index*/
+        }
+
+        #box2 {
+            background-color: lightblue;
+            position: relative;
+            top: 20px;
+            /* Moves down 20px from its normal position */
+            left: 30px;
+            /* Moves right 20px from its normal position */
+        }
+
+        #box3 {
+            background-color: lightgreen;
+            position: absolute;
+            top: 100px;
+            /* 15px from the top of the nearest positioned ancestor here body tag (or the viewport) */
+            left: 150px;
+            /* 150px from the left of the nearest positioned ancestor (or the viewport) */
+        }
+
+        #box4 {
+            background-color: lightgoldenrodyellow;
+            position: fixed;
+            bottom: 10px;
+            /* 10px from the bottom of the viewport */
+            right: 10px;
+            /* 10px from the right of the viewport */
+            z-index: 1;
+            background-image: url("image.png");
+            background-size: cover;
+        }
+
+        #box5 {
+            background-color: lightgray;
+            position: sticky;
+            top: 60px;
+            /* top offset 60px  which means the this box don't overlap the nav bar */
+            /* Sticks to the top of the viewport when you reach its scroll position 
+            This is very useful for headers
+            so when you scroll down the page it will stick to the top
+            */
+            background-color: orange;
+        }
+
+        #box6 {
+            position: fixed;
+            right: 0px;
+            top: 40vh;
+            background-color: purple;
+            width: 250px;
+            height: 150px;
+            color: white;
+            text-align: center;
+            line-height: 150px;
+            /* This will act as a fixed sidebar you can put any content here like playing your youtube video or ads */
+        }
+
+        .footer {
+            position: fixed;
+            /* Footer stays at the bottom of the viewport */
+            bottom: 0;
+            width: 100%;
+            background-color: gray;
+            color: white;
+            text-align: center;
+            /* Centered text */
+            padding: 10px 0;
+            /* Padding for better appearance */
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="boxmodel.html">Box Model</a>
+        <a href="position.html">Position Property</a>
+        <a href="flexbox.html">Flexbox</a>
+        <a href="grid.html">Grid</a>
+        <button onclick="DarkMode ()">Dark Mode</button>
+    </nav>
+    <div id="box1">Box1 </div>
+    <div id="box2">Box2 </div>
+    <div id="box3">Box3 </div>
+    <div id="box4">Box4 </div>
+    <div id="box5">Box5 </div>
+    <div id="box6">Box6 </div>
+
+    <p>lorem Nature is the phenomena of the physical world collectively, including plants, animals, the landscape, and
+        other
+        features and products of the earth, as opposed to humans or human creations. The study of nature is a large part
+        of science. Although humans are part of nature, human activity is often understood as a separate category from
+        other natural phenomena.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit adipisci repellat cum ipsam! Labore aliquam
+        qui
+        hic nemo officiis dicta, ut iure, ipsa voluptates exercitationem minus deserunt architecto quos. Ut maiores
+        quisquam cum corporis hic architecto nesciunt ducimus? Dolorum iure accusantium ad consequuntur minus, ullam
+        cum! Mollitia consectetur eius quaerat consequatur? Reprehenderit enim vero quasi exercitationem molestias harum
+        id vel qui. Necessitatibus, at animi dolorem ipsum enim repudiandae deserunt soluta architecto, corrupti saepe
+        fuga perferendis expedita porro suscipit dolor sequi voluptates iste voluptas culpa ipsa earum asperiores
+        laudantium. Itaque, deleniti? Dolores nihil aliquam optio consequatur nobis molestias doloremque eligendi
+        recusandae accusamus provident eum vel nemo dolor ab mollitia quisquam ipsum, commodi impedit tempora excepturi
+        earum maiores? Facere repudiandae inventore distinctio, asperiores voluptate esse quos aperiam possimus natus
+        dolor animi, ea, sequi eaque tempora atque non mollitia numquam doloremque! Aliquam earum animi, cumque ducimus
+        delectus, hic eum voluptates incidunt modi quae adipisci dolor pariatur temporibus exercitationem doloribus
+        magni cupiditate illum error quisquam. Doloremque dolorem cum distinctio ea, voluptate placeat aspernatur ab
+        reprehenderit tempora animi voluptatum? A voluptatum velit similique, ea consequatur, quia facere alias officiis
+        quidem quo perspiciatis facilis ex. Aspernatur quasi blanditiis, accusamus at harum architecto, possimus quae
+        eos doloremque repudiandae ad consequuntur dolorum placeat nesciunt. Corporis eos nihil minus atque odit
+        distinctio, ea dolor eligendi! Officiis reiciendis consectetur, nam saepe iusto sunt! Excepturi ullam harum in,
+        repellat, quam ad quibusdam reiciendis quaerat ipsa molestias sit maiores eligendi eaque tenetur illum odit
+        saepe natus, iure deserunt pariatur assumenda recusandae tempore obcaecati perspiciatis! Quam omnis explicabo
+        fugiat. Unde porro recusandae quod quasi numquam fugit. Sequi nihil nisi, perferendis facere sed natus,
+        accusantium delectus aspernatur quaerat laudantium aliquam, quas nesciunt earum totam. Architecto et totam culpa
+        libero. Quia veniam et cumque consectetur, eos, voluptas consequatur error, non vel laboriosam eius? Error at
+        dignissimos rerum nisi tempora, veniam ab ea dolorem iure iusto hic voluptatibus. Veniam consequatur corporis
+        nulla iusto eaque, delectus alias voluptas quibusdam voluptatem earum expedita magni praesentium saepe rerum
+        dolorem suscipit qui aperiam odio blanditiis iste excepturi neque enim. Est, sed adipisci voluptatem eos
+        reprehenderit repudiandae consequatur et laudantium voluptates ipsum vitae tempora impedit, dolor mollitia unde
+        culpa porro molestiae veritatis ea sit facere. Iusto corrupti quibusdam dicta, nam culpa numquam totam?
+        Explicabo repellat voluptatibus libero sapiente, cupiditate dolore non eligendi soluta obcaecati animi ducimus!
+        Cumque excepturi quaerat earum deserunt culpa error blanditiis dicta aliquid ratione amet? Nemo enim, assumenda
+        unde consectetur sapiente sit iure dolorem dignissimos reiciendis magnam optio asperiores labore nam laborum.
+        Magni laborum accusamus animi voluptatum beatae id numquam, asperiores esse temporibus illo nulla nam?
+        Voluptates obcaecati ut odit hic aspernatur quibusdam, cumque dolorem? Repellendus alias obcaecati repudiandae
+        repellat quae ipsam deserunt vel laudantium eum, labore officiis nesciunt non eos dolorum ducimus porro
+        voluptatibus consequatur officia. Sed tempora obcaecati fugit eos neque dolores labore ex modi, qui iste ipsa
+        praesentium quibusdam ut aperiam officiis. Omnis facilis asperiores dignissimos? Laborum ex illum cumque
+        deserunt iure fugiat rem impedit corrupti mollitia assumenda ea placeat ullam temporibus alias accusantium
+        recusandae sunt nesciunt tempora itaque, pariatur tempore similique non dignissimos veniam! Doloribus porro,
+        officia esse alias architecto beatae autem quas molestias accusamus veniam, aspernatur consequuntur nisi vel
+        veritatis expedita hic quo deserunt error iure, harum in nulla eveniet sint vitae? Eaque ullam ipsa labore
+        cumque. Rem natus eos vero animi cumque veritatis sapiente mollitia ab ut earum itaque nemo architecto, deleniti
+        porro laborum rerum blanditiis delectus dignissimos aspernatur distinctio saepe, sint aut? Iste animi odit,
+        distinctio, enim harum qui, eveniet earum libero obcaecati eaque at illum in quaerat ex maiores neque reiciendis
+        consequatur? Cupiditate nesciunt tenetur ipsa aperiam obcaecati numquam exercitationem delectus consectetur,
+        beatae facere natus, necessitatibus accusamus adipisci cum. Distinctio voluptas expedita necessitatibus dicta
+        incidunt, vitae quis animi, delectus quaerat cum neque eum qui cupiditate quos, soluta molestias asperiores
+        accusantium inventore quam. Architecto alias laboriosam, nisi sit autem, corporis voluptas, dolores quos
+        mollitia dolorum molestiae!
+
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias cum consequatur aspernatur consectetur! Incidunt
+        debitis alias quae? Nihil illo iste placeat aperiam suscipit eos molestiae animi dolorem, ipsa pariatur aut quia
+        dolorum officia officiis obcaecati enim totam perferendis? Fuga veritatis hic at sapiente animi numquam possimus
+        repellat? Saepe, mollitia vel expedita harum eaque veniam possimus eveniet cum at, ducimus recusandae vitae
+        tenetur deserunt nostrum suscipit necessitatibus reprehenderit explicabo tempore. Vero quia optio, obcaecati
+        beatae eaque, itaque ipsa, enim facere quo consectetur delectus. Provident fuga recusandae quis, aperiam
+        adipisci at minus perspiciatis eveniet quo, id deserunt incidunt maxime molestiae maiores aliquid quia repellat!
+        Quo explicabo sed cupiditate culpa voluptate totam eius maiores, suscipit iste ullam saepe magni modi aperiam
+        earum deserunt atque adipisci magnam distinctio neque labore quas, aut delectus praesentium. Veniam totam enim,
+        id ea, inventore deleniti assumenda molestias maiores nostrum consequuntur cum dolorem eligendi autem mollitia
+        dolore praesentium odio? Facilis omnis impedit libero totam sunt blanditiis quaerat, corporis similique, alias
+        deleniti quae, ad repellendus. Itaque nulla ipsa non, expedita nam excepturi sequi vitae perspiciatis eaque
+        culpa esse doloremque. Nostrum, veniam, necessitatibus, reiciendis veritatis unde quasi quos provident eligendi
+        tempore eos itaque nemo totam dicta suscipit cum. Cupiditate numquam ducimus minima mollitia placeat dolore!
+        Eaque quos eligendi odio debitis, facere excepturi assumenda modi beatae praesentium temporibus quia nam iste
+        dolor, explicabo officia aperiam corporis eveniet tempora architecto! Molestias deserunt ipsa excepturi? Sit,
+        nesciunt culpa.
+    </p>
+
+    <footer class="footer">
+        <p>Footer Content</p>
+        copyright @ 2024
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

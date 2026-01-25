@@ -1,0 +1,91 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  color: #000;
+}
+
+/* NAVBAR */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  line-height: 55px;
+}
+
+.navbar nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: black;
+  font-size: 14px;
+  font-size: large;
+}
+
+/* HERO SECTION */
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* IMAGE */
+.hero-img {
+  width: 100vw;
+  height: 80vh;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* OVERLAY TEXT */
+.hero-text {
+  position: absolute;
+  top: 30%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+  text-align: left;
+  z-index: 2;
+}
+
+/* MAIN HEADING */
+.hero-text h1 {
+  font-size: 80px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: white;
+  mix-blend-mode: difference;
+}
+
+/* SUB TEXT */
+.hero-text p {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.85);
+  mix-blend-mode: difference;
+}
+
+/* SOFT DARK OVERLAY FOR READABILITY */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.35)
+  );
+  z-index: 1;
+}
+
+
+

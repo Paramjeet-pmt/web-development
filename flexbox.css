@@ -1,0 +1,94 @@
+* {
+    text-align: center;
+}
+
+nav.navbar {
+    background-color: #333;
+    line-height: 40px;
+}
+.list {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-evenly;
+}
+.item a {
+    display: block;
+    color: white;
+    text-decoration: none;
+}
+
+
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    border: 2px solid black;
+    margin: 20px;
+}
+
+#container1 {
+    flex-direction: row; /* default*/
+}
+#container2 {
+    flex-direction: row-reverse; /* items in reverse order */
+}
+#container3 {
+    flex-direction: column; /* items stacked vertically */
+}
+#container4 {
+    flex-direction: column-reverse; /* items stacked vertically in reverse order */
+}
+#container5 {
+    flex-direction: column-reverse; /* items stacked vertically in reverse order */
+    margin-top: 200px; /*Here i give this margin to show the effect of column-reverse more clearly  and the elements that overflow due to flex none will not overflow into the container 3*/
+    margin-bottom: 300px;
+}
+#container5 > div {
+    flex: none; /*This prevents the child divs from stretching to fill the container or div not adjust their size according to the container */ 
+}
+
+
+div > div{
+    width: 100px;
+    height: 100px;
+    
+}
+
+div {
+    display: inline-block;
+    border: 2px solid black;
+    
+
+}
+
+.box1 {
+    background-color: lightcoral;
+}
+.box2 {
+    background-color: lightseagreen;
+}
+.box3 {
+    background-color: lightblue;
+}
+.box4 {
+    background-color: lightgoldenrodyellow;
+}
+.box5 {
+    background-color: lightpink;
+}
+
+.space {
+    line-height: 150px; /* Spacer to demonstrate scrolling effect */
+}
+
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

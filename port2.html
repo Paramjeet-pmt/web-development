@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Portfolio — Paramjeet</title>
+<style>
+  :root{
+    --bg:#0f1724;
+    --card:#0b1220;
+    --muted:#9aa4b2;
+    --accent:#7c5cff;
+    --glass: rgba(255,255,255,0.04);
+    --glass-2: rgba(255,255,255,0.02);
+    --text:#e6eef8;
+    --radius:12px;
+    --shadow: 0 6px 18px rgba(2,6,23,0.6);
+    --mono: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  }
+  [data-theme="light"]{
+    --bg:#f6f8fb;
+    --card:#ffffff;
+    --muted:#556070;
+    --accent:#5b21b6;
+    --glass: rgba(2,6,23,0.03);
+    --glass-2: rgba(2,6,23,0.02);
+    --text:#0b1220;
+    --shadow: 0 8px 24px rgba(11,18,32,0.06);
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family:var(--mono);
+    background:linear-gradient(180deg,var(--bg), #071025 120%);
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    padding:32px;
+    transition:background .35s ease,color .35s ease;
+  }
+
+  .container{
+    max-width:1100px;
+    margin:0 auto;
+  }
+
+  header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    margin-bottom:28px;
+  }
+
+  .brand{
+    display:flex;
+    gap:14px;
+    align-items:center;
+  }
+  .logo{
+    width:56px;height:56px;border-radius:12px;
+    background:linear-gradient(135deg,var(--accent),#3dd6c9);
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;color:white;font-size:20px;box-shadow:var(--shadow);
+  }
+  h1{font-size:20px;margin:0}
+  p.lead{margin:0;color:var(--muted);font-size:14px}
+
+  .controls{display:flex;gap:10px;align-items:center}
+  .btn{
+    background:var(--glass);
+    border:1px solid rgba(255,255,255,0.04);
+    color:var(--text);
+    padding:8px 12px;border-radius:10px;
+    cursor:pointer;font-weight:600;
+    transition:transform .12s ease,background .12s ease;
+  }
+  .btn:active{transform:translateY(1px)}
+  .btn.ghost{background:transparent;border:1px dashed rgba(255,255,255,0.04)}
+  .theme-toggle{display:flex;align-items:center;gap:8px;padding:6px 10px}
+
+  /* Hero */
+  .hero{
+    display:grid;
+    grid-template-columns:1fr 360px;
+    gap:28px;
+    align-items:center;
+    margin-bottom:28px;
+  }
+  .intro{
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+    padding:26px;border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    border:1px solid var(--glass-2);
+  }
+  .intro h2{margin:0 0 8px 0;font-size:28px}
+  .intro p{margin:0;color:var(--muted);line-height:1.5}
+
+  .profile{
+    background:linear-gradient(135deg, rgba(255,255,255,0.02), transparent);
+    padding:18px;border-radius:var(--radius);
+    display:flex;flex-direction:column;align-items:center;gap:12px;
+    box-shadow:var(--shadow);border:1px solid var(--glass-2);
+  }
+  .avatar{
+    width:120px;height:120px;border-radius:18px;
+    background:linear-gradient(135deg,#2b2bff,#00d4b8);
+    display:flex;align-items:center;justify-content:center;color:white;
+    font-size:40px;font-weight:700;box-shadow:0 8px 30px rgba(0,0,0,0.35);
+  }
+  .profile .meta{color:var(--muted);text-align:center;font-size:14px}
+
+  /* Filters */
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}
+  .chip{padding:8px 12px;border-radius:999px;background:var(--glass);cursor:pointer;border:1px solid rgba(255,255,255,0.03);color:var(--muted);font-weight:600}
+  .chip.active{background:linear-gradient(90deg,var(--accent),#3dd6c9);color:white}
+
+  /* Projects grid */
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+  }
+  .card{
+    background:var(--card);
+    padding:16px;border-radius:14px;border:1px solid var(--glass-2);
+    box-shadow:0 6px 18px rgba(2,6,23,0.45);
+    transition:transform .18s ease,box-shadow .18s ease;
+    cursor:pointer;overflow:hidden;
+  }
+  .card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(2,6,23,0.6)}
+  .card .thumb{
+    height:140px;border-radius:10px;background:linear-gradient(135deg,#1f2937,#111827);
+    display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:700;margin-bottom:12px;
+  }
+  .card h3{margin:0 0 6px 0;font-size:16px}
+  .card p{margin:0;color:var(--muted);font-size:13px}
+
+  /* Modal */
+  .modal-backdrop{
+    position:fixed;inset:0;background:rgba(2,6,23,0.6);display:none;align-items:center;justify-content:center;padding:24px;
+  }
+  .modal{
+    width:100%;max-width:820px;background:var(--card);border-radius:14px;padding:20px;border:1px solid var(--glass-2);
+    box-shadow:0 30px 80px rgba(2,6,23,0.7);
+  }
+  .modal .close{float:right;background:transparent;border:none;color:var(--muted);font-weight:700;cursor:pointer}
+
+  /* Contact */
+  .contact{
+    margin-top:18px;padding:16px;border-radius:12px;background:linear-gradient(180deg,var(--glass),transparent);
+    border:1px solid var(--glass-2);
+  }
+  .field{display:flex;flex-direction:column;margin-bottom:10px}
+  .field label{font-size:13px;color:var(--muted);margin-bottom:6px}
+  .field input,.field textarea{
+    padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text);
+    outline:none;font-size:14px;
+  }
+  .field textarea{min-height:100px;resize:vertical}
+
+  /* Responsive */
+  @media (max-width:980px){
+    .hero{grid-template-columns:1fr}
+    .grid{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width:640px){
+    body{padding:18px}
+    .grid{grid-template-columns:1fr}
+    .profile{flex-direction:row;justify-content:space-between;padding:12px}
+    .avatar{width:72px;height:72px;font-size:22px}
+  }
+
+  /* small helpers */
+  .muted{color:var(--muted)}
+  .flex{display:flex;gap:8px;align-items:center}
+  .hidden{display:none}
+</style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">P</div>
+        <div>
+          <h1>Paramjeet</h1>
+          <p class="lead">Frontend developer and creative coder</p>
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="theme-toggle btn" id="themeBtn" title="Toggle theme">Toggle Theme</div>
+        <button class="btn ghost" id="downloadBtn" title="Export not implemented">Export</button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="intro">
+        <h2>Crafting interactive experiences</h2>
+        <p>Small, focused projects that highlight UI, animations, and clean code. Use this template to test ideas, practice CSS, and build micro interactions.</p>
+
+        <div class="filters" id="filters">
+          <div class="chip active" data-filter="all">All</div>
+          <div class="chip" data-filter="web">Web</div>
+          <div class="chip" data-filter="ui">UI</div>
+          <div class="chip" data-filter="game">Game</div>
+          <div class="chip" data-filter="experiment">Experiment</div>
+        </div>
+
+        <div class="contact">
+          <h3 style="margin-top:0">Contact</h3>
+          <form id="contactForm" onsubmit="return false;">
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" placeholder="Your name" required />
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" type="email" placeholder="you@example.com" required />
+            </div>
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" placeholder="Say hi"></textarea>
+            </div>
+            <div style="display:flex;gap:8px;align-items:center">
+              <button class="btn" id="sendBtn">Validate</button>
+              <div id="formMsg" class="muted" style="font-size:13px"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <aside class="profile">
+        <div class="avatar">PJ</div>
+        <div class="meta">
+          <div style="font-weight:700">Paramjeet</div>
+          <div class="muted">Gurugram, India • Frontend</div>
+          <div style="margin-top:8px">
+            <button class="btn" id="viewWork">View Work</button>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <main>
+      <div class="grid" id="projects">
+        <!-- Project cards generated by JS -->
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-backdrop" id="modal">
+    <div class="modal" role="dialog" aria-modal="true">
+      <button class="close" id="closeModal">Close</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+<script>
+/* ===== Sample project data =====
+   Replace or extend these objects to test different layouts and content.
+*/
+const projectsData = [
+  {
+    id: 'p1',
+    title: 'Interactive CSS Grid Builder',
+    desc: 'A tiny playground to design CSS grids visually and export snippets.',
+    tags: ['web','ui'],
+    color: '#7c5cff'
+  },
+  {
+    id: 'p2',
+    title: 'Pixel Runner',
+    desc: 'A micro endless runner built with canvas and simple physics.',
+    tags: ['game','experiment'],
+    color: '#ff6b6b'
+  },
+  {
+    id: 'p3',
+    title: 'Neumorphic Dashboard',
+    desc: 'Dashboard UI exploring neumorphism and micro interactions.',
+    tags: ['ui','web'],
+    color: '#00d4b8'
+  },
+  {
+    id: 'p4',
+    title: 'SVG Morph Animations',
+    desc: 'Experiment with SVG path morphing and timeline control.',
+    tags: ['experiment','ui'],
+    color: '#f59e0b'
+  },
+  {
+    id: 'p5',
+    title: '3D Card Hover',
+    desc: 'CSS 3D transforms and lighting effects for product cards.',
+    tags: ['ui','web'],
+    color: '#60a5fa'
+  },
+  {
+    id: 'p6',
+    title: 'Mini Chat UI',
+    desc: 'A playful chat UI with message reactions and typing indicator.',
+    tags: ['ui','web'],
+    color: '#a78bfa'
+  }
+];
+
+/* ===== Render projects ===== */
+const projectsEl = document.getElementById('projects');
+
+function renderProjects(list){
+  projectsEl.innerHTML = '';
+  list.forEach(p=>{
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.dataset.id = p.id;
+    card.innerHTML = `
+      <div class="thumb" style="background:linear-gradient(135deg, ${p.color}, rgba(0,0,0,0.15))">
+        ${p.title.split(' ').slice(0,2).map(w=>w[0]).join('')}
+      </div>
+      <h3>${p.title}</h3>
+      <p>${p.desc}</p>
+      <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+        ${p.tags.map(t=>`<span class="chip" style="padding:6px 8px;font-size:12px">${t}</span>`).join('')}
+      </div>
+    `;
+    card.addEventListener('click', ()=>openModal(p));
+    projectsEl.appendChild(card);
+  });
+}
+
+/* ===== Modal logic ===== */
+const modal = document.getElementById('modal');
+const modalContent = document.getElementById('modalContent');
+const closeModalBtn = document.getElementById('closeModal');
+
+function openModal(project){
+  modalContent.innerHTML = `
+    <h2 style="margin-top:0">${project.title}</h2>
+    <p class="muted">${project.tags.join(' • ')}</p>
+    <div style="height:220px;border-radius:10px;background:linear-gradient(135deg, ${project.color}, rgba(0,0,0,0.12));margin:14px 0;display:flex;align-items:center;justify-content:center;color:white;font-weight:700">Preview Area</div>
+    <p>${project.desc}</p>
+    <div style="display:flex;gap:8px;margin-top:12px">
+      <button class="btn" onclick="simulateCode('${project.id}')">Open Code</button>
+      <button class="btn ghost" onclick="closeModal()">Close</button>
+    </div>
+  `;
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(){
+  modal.style.display = 'none';
+  document.body.style.overflow = '';
+}
+closeModalBtn.addEventListener('click', closeModal);
+modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal(); });
+
+/* ===== Filters ===== */
+const filterEls = document.querySelectorAll('#filters .chip');
+filterEls.forEach(chip=>{
+  chip.addEventListener('click', ()=>{
+    filterEls.forEach(c=>c.classList.remove('active'));
+    chip.classList.add('active');
+    const f = chip.dataset.filter;
+    if(f === 'all') renderProjects(projectsData);
+    else renderProjects(projectsData.filter(p=>p.tags.includes(f)));
+  });
+});
+
+/* ===== Theme toggle ===== */
+const themeBtn = document.getElementById('themeBtn');
+const root = document.documentElement;
+let dark = true;
+function applyTheme(){
+  if(dark) root.removeAttribute('data-theme');
+  else root.setAttribute('data-theme','light');
+}
+themeBtn.addEventListener('click', ()=>{
+  dark = !dark;
+  applyTheme();
+});
+
+/* ===== Contact form validation (local only) ===== */
+const contactForm = document.getElementById('contactForm');
+const formMsg = document.getElementById('formMsg');
+const sendBtn = document.getElementById('sendBtn');
+
+sendBtn.addEventListener('click', ()=>{
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  if(!name || !email){
+    formMsg.textContent = 'Please fill name and email';
+    formMsg.style.color = '#ffb4b4';
+    return;
+  }
+  // simple email check
+  const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  if(!ok){
+    formMsg.textContent = 'Invalid email';
+    formMsg.style.color = '#ffb4b4';
+    return;
+  }
+  formMsg.textContent = 'Looks good — local validation passed';
+  formMsg.style.color = '#9ee6c1';
+});
+
+/* ===== Small helpers ===== */
+function simulateCode(id){
+  const p = projectsData.find(x=>x.id===id);
+  modalContent.innerHTML += `<pre style="background:rgba(0,0,0,0.06);padding:12px;border-radius:8px;margin-top:12px;color:var(--muted);overflow:auto">/* Example: open console to see a snippet */\nconsole.log('Open project: ${p.title}');</pre>`;
+}
+
+/* ===== Initial render and interactions ===== */
+renderProjects(projectsData);
+document.getElementById('viewWork').addEventListener('click', ()=> {
+  document.querySelector('#filters .chip[data-filter="all"]').click();
+  window.scrollTo({top:document.querySelector('.grid').offsetTop - 20, behavior:'smooth'});
+});
+
+/* Keyboard: Esc closes modal */
+document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal(); });
+
+/* Small accessibility: focus trap not implemented but can be added */
+</script>
+</body>
+</html>

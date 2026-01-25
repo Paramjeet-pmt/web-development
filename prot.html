@@ -1,0 +1,83 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paramjeet Portfolio</title>
+    <link rel="stylesheet" href="port.css">
+</head>
+
+<body>
+    <header>
+        <h1>Paramjeet </h1>
+        <nav>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+            <button id="toggleDark">Dark Mode</button>
+        </nav>
+    </header>
+
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="projects">
+            <div class="card">
+                <h3>Project Alpha</h3>
+                <p>Test your HTML/CSS/JS skills with this demo project.</p>
+            </div>
+            <div class="card">
+                <h3>Project Beta</h3>
+                <p>Another project showing responsive layout and creativity.</p>
+            </div>
+            <div class="card">
+                <h3>Project Gamma</h3>
+                <p>Highlight your problem-solving and coding abilities here.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="skills">
+            <div>
+                <span>HTML & CSS</span>
+                <div class="skills-bar">
+                    <div style="width:90%">90%</div>
+                </div>
+            </div>
+            <div>
+                <span>JavaScript</span>
+                <div class="skills-bar">
+                    <div style="width:85%">85%</div>
+                </div>
+            </div>
+            <div>
+                <span>React</span>
+                <div class="skills-bar">
+                    <div style="width:80%">80%</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <form onsubmit="sendMail(event)">
+            <input type="text" placeholder="Name" name="name" required>
+            <input type="email" placeholder="Email" name="email" required>
+            <input type="text" placeholder="Subject" name="subject">
+            <textarea placeholder="Message" name="message" rows="5" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </section>
+
+
+    <script src="port.js"></script>
+</body>
+
+</html>
