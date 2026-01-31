@@ -64,7 +64,7 @@ All trademarks, logos, and images belong to their respective owners (Amazon).
 
 ## 👤 Author
 
-Paramjeet Singh
+Paramjeet 
 BCA Student | Web Development Learner
 
 **GitHub:** https://github.com/Paramjeet-pmt
